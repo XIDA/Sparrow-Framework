@@ -45,6 +45,10 @@
 ------------------------------------------------------------------------------------------------- */
 
 @interface SPJuggler : NSObject <SPAnimatable>
+{
+  @protected
+    NSMutableOrderedSet *_objects;
+}
 
 /// --------------------
 /// @name Initialization

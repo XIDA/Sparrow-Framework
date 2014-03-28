@@ -29,6 +29,10 @@
 ------------------------------------------------------------------------------------------------- */
 
 @interface SPBlurFilter : SPFragmentFilter
+{
+    float _blurX;
+    float _blurY;
+}
 
 /// --------------------
 /// @name Initialization

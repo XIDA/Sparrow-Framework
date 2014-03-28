@@ -13,6 +13,10 @@
 #import <Sparrow/SPMacros.h>
 #import <Sparrow/SPNSExtensions.h>
 
+// [EDIT] START
+#import <Sparrow/XDNSExtensions.h>
+// [EDIT] END
+
 #import <zlib.h>
 
 // --- structs and enums ---------------------------------------------------------------------------
@@ -90,6 +94,10 @@ static char encodingTable[64] = {
 
 - (float)contentScaleFactor
 {
+    // [EDIT] START
+    return [XDNSExtensions contentScaleFactorWithString:self];
+    // [EDIT] END
+    
     NSString *filename = [self lastPathComponent];
     NSRange atRange = [filename rangeOfString:@"@"];
     if (atRange.length == 0) return 1.0f;

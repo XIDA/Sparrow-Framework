@@ -17,6 +17,8 @@
 @class SPJuggler;
 @class SPProgram;
 @class SPStage;
+@class SPTouchProcessor;
+@class SPRenderSupport;
 
 typedef void (^SPRootCreatedBlock)(id root);
 
@@ -81,6 +83,13 @@ typedef void (^SPRootCreatedBlock)(id root);
 ------------------------------------------------------------------------------------------------- */
 
 @interface SPViewController : GLKViewController
+{
+  @public
+    double _lastTouchTimestamp;
+    SPTouchProcessor *_touchProcessor;
+  @protected
+    SPRenderSupport *_support;
+}
 
 /// -------------
 /// @name Startup

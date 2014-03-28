@@ -49,8 +49,6 @@
     SPStage *_stage;
     SPDisplayObject *_root;
     SPJuggler *_juggler;
-    SPTouchProcessor *_touchProcessor;
-    SPRenderSupport *_support;
     SPRootCreatedBlock _onRootCreated;
     SPStatsDisplay *_statsDisplay;
     NSMutableDictionary *_programs;
@@ -58,7 +56,6 @@
     dispatch_queue_t _resourceQueue;
     SPContext *_resourceContext;
     
-    double _lastTouchTimestamp;
     float _contentScaleFactor;
     float _viewScaleFactor;
     BOOL _supportHighResolutions;

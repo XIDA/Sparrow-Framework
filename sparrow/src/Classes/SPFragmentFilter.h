@@ -15,6 +15,7 @@
 @class SPMatrix;
 @class SPRenderSupport;
 @class SPTexture;
+@class SPQuadBatch;
 
 // Filter Mode
 typedef NS_ENUM(uint, SPFragmentFilterMode)
@@ -51,6 +52,13 @@ typedef NS_ENUM(uint, SPFragmentFilterMode)
 ------------------------------------------------------------------------------------------------- */
 
 @interface SPFragmentFilter : NSObject
+{
+    float _marginX;
+    float _marginY;
+    SPQuadBatch *_cache;
+    BOOL _cacheRequested;
+    SPFragmentFilterMode _mode;
+}
 
 /// --------------------
 /// @name Initialization

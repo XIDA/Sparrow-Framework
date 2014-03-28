@@ -48,8 +48,6 @@
     int _numPasses;
     int _vertexPosID;
     int _texCoordsID;
-    float _marginX;
-    float _marginY;
     float _offsetX;
     float _offsetY;
 
@@ -57,8 +55,6 @@
     int _savedFramebuffer;
     int _savedViewport[4];
     SPMatrix *_projMatrix;
-    SPQuadBatch *_cache;
-    BOOL _cacheRequested;
 
     SPVertexData *_vertexData;
     ushort _indexData[6];
