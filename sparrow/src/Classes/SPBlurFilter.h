@@ -10,6 +10,7 @@
 //
 
 #import <Sparrow/SPFragmentFilter.h>
+#import <Sparrow/SPFragmentFilterExport.h>
 
 /** ------------------------------------------------------------------------------------------------
 
@@ -28,7 +29,7 @@
 
 ------------------------------------------------------------------------------------------------- */
 
-@interface SPBlurFilter : SPFragmentFilter
+@interface SPBlurFilter : SPFragmentFilter <SPFragmentFilterExport>
 {
     float _blurX;
     float _blurY;
