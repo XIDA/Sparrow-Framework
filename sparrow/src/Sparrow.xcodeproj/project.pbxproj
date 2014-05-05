@@ -30,12 +30,12 @@
 		87F62CA0188095CD0059F105 /* SPTouch_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = DEDCD3CF0FADF52B0022011C /* SPTouch_Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87F62CA1188095CD0059F105 /* SPEventDispatcher_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7DCA118033498005E8CFB /* SPEventDispatcher_Internal.h */; };
 		87F62CA2188095CD0059F105 /* SPEvent_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = DEDCD44A0FADFF250022011C /* SPEvent_Internal.h */; };
-		B70A0EAF1917A5800003A73C /* SPTweenExport.h in Headers */ = {isa = PBXBuildFile; fileRef = B70A0EAE1917A5800003A73C /* SPTweenExport.h */; };
+		B70A0EAF1917A5800003A73C /* SPTweenExport.h in Headers */ = {isa = PBXBuildFile; fileRef = B70A0EAE1917A5800003A73C /* SPTweenExport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B70A0EB11917A5B70003A73C /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B70A0EB01917A5B70003A73C /* JavaScriptCore.framework */; };
-		B70A0EB31917A6600003A73C /* SPEventDispatcherExport.h in Headers */ = {isa = PBXBuildFile; fileRef = B70A0EB21917A6600003A73C /* SPEventDispatcherExport.h */; };
-		B70A0EB61917A6E20003A73C /* NSObjectExport.h in Headers */ = {isa = PBXBuildFile; fileRef = B70A0EB51917A6E20003A73C /* NSObjectExport.h */; };
-		B70A0EB81917A77F0003A73C /* SPDisplayObjectExport.h in Headers */ = {isa = PBXBuildFile; fileRef = B70A0EB71917A77F0003A73C /* SPDisplayObjectExport.h */; };
-		B70A0EBA1917A8490003A73C /* SPFragmentFilterExport.h in Headers */ = {isa = PBXBuildFile; fileRef = B70A0EB91917A8490003A73C /* SPFragmentFilterExport.h */; };
+		B70A0EB31917A6600003A73C /* SPEventDispatcherExport.h in Headers */ = {isa = PBXBuildFile; fileRef = B70A0EB21917A6600003A73C /* SPEventDispatcherExport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70A0EB61917A6E20003A73C /* NSObjectExport.h in Headers */ = {isa = PBXBuildFile; fileRef = B70A0EB51917A6E20003A73C /* NSObjectExport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70A0EB81917A77F0003A73C /* SPDisplayObjectExport.h in Headers */ = {isa = PBXBuildFile; fileRef = B70A0EB71917A77F0003A73C /* SPDisplayObjectExport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B70A0EBA1917A8490003A73C /* SPFragmentFilterExport.h in Headers */ = {isa = PBXBuildFile; fileRef = B70A0EB91917A8490003A73C /* SPFragmentFilterExport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72A530018E582300036D7A3 /* XDNSExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = B72A52FD18E582290036D7A3 /* XDNSExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72A530118E582380036D7A3 /* XDNSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B72A52FE18E582290036D7A3 /* XDNSExtensions.m */; };
 		DE019C391026360B00ECB0AC /* SPTween.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7044760FB62080007F5ECC /* SPTween.m */; };
@@ -928,6 +928,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B70A0EB61917A6E20003A73C /* NSObjectExport.h in Headers */,
+				B70A0EB31917A6600003A73C /* SPEventDispatcherExport.h in Headers */,
+				B70A0EB81917A77F0003A73C /* SPDisplayObjectExport.h in Headers */,
+				B70A0EBA1917A8490003A73C /* SPFragmentFilterExport.h in Headers */,
+				B70A0EAF1917A5800003A73C /* SPTweenExport.h in Headers */,
 				DE611373134F8F6C00AB742E /* SPALSound.h in Headers */,
 				DE611374134F8F6C00AB742E /* SPALSoundChannel.h in Headers */,
 				DE611391134F8FBD00AB742E /* SPAnimatable.h in Headers */,
@@ -948,7 +953,6 @@
 				DE611395134F8FBD00AB742E /* SPDelayedInvocation.h in Headers */,
 				872F5C4F1880E2DD0016071B /* SPDisplacementMapFilter.h in Headers */,
 				DE611383134F8F8300AB742E /* SPDisplayObject.h in Headers */,
-				B70A0EB61917A6E20003A73C /* NSObjectExport.h in Headers */,
 				DE611384134F8F8300AB742E /* SPDisplayObjectContainer.h in Headers */,
 				DE0E8A1518E1BCC800A6ACC8 /* SPTextureCache.h in Headers */,
 				DE61137D134F8F6C00AB742E /* SPEnterFrameEvent.h in Headers */,
@@ -962,7 +966,6 @@
 				DE611396134F8FBD00AB742E /* SPMacros.h in Headers */,
 				DE611397134F8FBD00AB742E /* SPMatrix.h in Headers */,
 				DE61138A134F8F8300AB742E /* SPMovieClip.h in Headers */,
-				B70A0EB31917A6600003A73C /* SPEventDispatcherExport.h in Headers */,
 				DE61139A134F8FBD00AB742E /* SPNSExtensions.h in Headers */,
 				87C7DCC2180480A7005E8CFB /* SPOpenGL.h in Headers */,
 				DEAAF3DB16BC0E46004EB9D5 /* SPOverlayView.h in Headers */,
@@ -989,14 +992,12 @@
 				DE61137B134F8F6C00AB742E /* SPTouch.h in Headers */,
 				DE61137C134F8F6C00AB742E /* SPTouchEvent.h in Headers */,
 				87F62C9F188095CD0059F105 /* SPTouchProcessor.h in Headers */,
-				B70A0EB81917A77F0003A73C /* SPDisplayObjectExport.h in Headers */,
 				DE611393134F8FBD00AB742E /* SPTransitions.h in Headers */,
 				DE611394134F8FBD00AB742E /* SPTween.h in Headers */,
 				DE611390134F8FBD00AB742E /* SPTweenedProperty.h in Headers */,
 				DE352353183FD53600E92E7E /* SPURLConnection.h in Headers */,
 				DE33072512D2EBCD009CC5E7 /* SPUtils.h in Headers */,
 				DE19443216D27E9E00E5CCD9 /* SPVertexData.h in Headers */,
-				B70A0EBA1917A8490003A73C /* SPFragmentFilterExport.h in Headers */,
 				DE8E6A8216B430C4007EE8BA /* SPViewController.h in Headers */,
 				87F62CA0188095CD0059F105 /* SPTouch_Internal.h in Headers */,
 				DEB057861801D20800A8F726 /* SparrowClass_Internal.h in Headers */,
@@ -1006,7 +1007,6 @@
 				87F62CA1188095CD0059F105 /* SPEventDispatcher_Internal.h in Headers */,
 				87F62CA2188095CD0059F105 /* SPEvent_Internal.h in Headers */,
 				87F62C9E188095CD0059F105 /* SPStage_Internal.h in Headers */,
-				B70A0EAF1917A5800003A73C /* SPTweenExport.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
