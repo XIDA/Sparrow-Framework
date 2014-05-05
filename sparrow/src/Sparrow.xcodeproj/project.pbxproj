@@ -40,6 +40,7 @@
 		B71686D61917C1D700A6659E /* SPJugglerExport.h in Headers */ = {isa = PBXBuildFile; fileRef = B71686D51917C1D700A6659E /* SPJugglerExport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72A530018E582300036D7A3 /* XDNSExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = B72A52FD18E582290036D7A3 /* XDNSExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B72A530118E582380036D7A3 /* XDNSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B72A52FE18E582290036D7A3 /* XDNSExtensions.m */; };
+		B78884771917CAE100C2F4C4 /* SPBlurFilterExport.h in Headers */ = {isa = PBXBuildFile; fileRef = B78884761917CAE100C2F4C4 /* SPBlurFilterExport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE019C391026360B00ECB0AC /* SPTween.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7044760FB62080007F5ECC /* SPTween.m */; };
 		DE019C3A1026361200ECB0AC /* SPDelayedInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFB1B94100926260022C117 /* SPDelayedInvocation.m */; };
 		DE019C3B1026363D00ECB0AC /* SPNSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE68EA160FBB5660004DBC95 /* SPNSExtensions.m */; };
@@ -241,6 +242,7 @@
 		B71686D51917C1D700A6659E /* SPJugglerExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPJugglerExport.h; sourceTree = "<group>"; };
 		B72A52FD18E582290036D7A3 /* XDNSExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDNSExtensions.h; sourceTree = "<group>"; };
 		B72A52FE18E582290036D7A3 /* XDNSExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDNSExtensions.m; sourceTree = "<group>"; };
+		B78884761917CAE100C2F4C4 /* SPBlurFilterExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPBlurFilterExport.h; sourceTree = "<group>"; };
 		DE0456E413882A27005FFBCE /* SPButtonTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPButtonTest.m; sourceTree = "<group>"; };
 		DE05748611E915A900F3A8A4 /* SPNSExtensionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPNSExtensionsTest.m; sourceTree = "<group>"; };
 		DE08535C0FEC21F500DAF53C /* SPImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPImage.h; sourceTree = "<group>"; };
@@ -571,6 +573,7 @@
 			isa = PBXGroup;
 			children = (
 				B70A0EB91917A8490003A73C /* SPFragmentFilterExport.h */,
+				B78884761917CAE100C2F4C4 /* SPBlurFilterExport.h */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -940,6 +943,7 @@
 				B70A0EBA1917A8490003A73C /* SPFragmentFilterExport.h in Headers */,
 				B71686D41917C16F00A6659E /* SparrowClassExport.h in Headers */,
 				B71686D61917C1D700A6659E /* SPJugglerExport.h in Headers */,
+				B78884771917CAE100C2F4C4 /* SPBlurFilterExport.h in Headers */,
 				B70A0EAF1917A5800003A73C /* SPTweenExport.h in Headers */,
 				DE611373134F8F6C00AB742E /* SPALSound.h in Headers */,
 				DE611374134F8F6C00AB742E /* SPALSoundChannel.h in Headers */,

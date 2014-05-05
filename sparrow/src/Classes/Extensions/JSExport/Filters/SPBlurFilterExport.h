@@ -1,39 +1,16 @@
 //
-//  SPBlurFilter.h
+//  SPBlurFilterExport.h
 //  Sparrow
 //
-//  Created by Robert Carone on 10/10/13.
-//  Copyright 2013 Gamua. All rights reserved.
+//  Created by Shilo White on 5/5/14.
 //
-//  This program is free software; you can redistribute it and/or modify
-//  it under the terms of the Simplified BSD License.
 //
 
-#import <Sparrow/SPFragmentFilter.h>
-#import <Sparrow/SPBlurFilterExport.h>
+#import <Foundation/Foundation.h>
+#import <JavascriptCore/JavascriptCore.h>
+#import <Sparrow/SPFragmentFilterExport.h>
 
-/** ------------------------------------------------------------------------------------------------
-
- The SPBlurFilter applies a gaussian blur to an object. The strength of the blur can be
- set for x- and y-axis separately (always relative to the stage).
-
- A blur filter can also be set up as a drop shadow or glow filter. Use the respective
- static methods to create such a filter.
-
- For each blur direction, the number of required passes is ceil(blur).
-    blur = 0.5: 1 pass
-    blur = 1.0: 1 pass
-    blur = 1.5: 2 passes
-    blur = 2.0: 2 passes
-    etc.
-
-------------------------------------------------------------------------------------------------- */
-
-@interface SPBlurFilter : SPFragmentFilter <SPBlurFilterExport>
-{
-    float _blurX;
-    float _blurY;
-}
+@protocol SPBlurFilterExport <SPFragmentFilterExport, JSExport>
 
 /// --------------------
 /// @name Initialization
@@ -43,10 +20,10 @@
 - (instancetype)initWithBlur:(float)blur resolution:(float)resolution;
 
 /// Initializes a blur filter with the specified blur and a resolution of 1.0f.
-- (instancetype)initWithBlur:(float)blur;
+//- (instancetype)initWithBlur:(float)blur;
 
 /// Initializes a blur filter with a blur and resolution of 1.0f.
-- (instancetype)init;
+//- (instancetype)init;
 
 /// Factory method.
 + (instancetype)blurFilterWithBlur:(float)blur resolution:(float)resolution;
