@@ -10,20 +10,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Sparrow/SPFragmentFilterExport.h>
 
 @class SPDisplayObject;
 @class SPMatrix;
 @class SPRenderSupport;
 @class SPTexture;
 @class SPQuadBatch;
-
-// Filter Mode
-typedef NS_ENUM(uint, SPFragmentFilterMode)
-{
-    SPFragmentFilterModeBelow,
-    SPFragmentFilterModeReplace,
-    SPFragmentFilterModeAbove
-};
 
 /** ------------------------------------------------------------------------------------------------
 
@@ -51,7 +44,7 @@ typedef NS_ENUM(uint, SPFragmentFilterMode)
 
 ------------------------------------------------------------------------------------------------- */
 
-@interface SPFragmentFilter : NSObject
+@interface SPFragmentFilter : NSObject <SPFragmentFilterExport>
 {
     float _marginX;
     float _marginY;

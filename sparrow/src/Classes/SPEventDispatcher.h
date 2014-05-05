@@ -11,8 +11,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Sparrow/SPEvent.h>
-
-typedef void (^SPEventBlock)(id event);
+#import <Sparrow/SPEventDispatcherExport.h>
 
 /** ------------------------------------------------------------------------------------------------
 
@@ -59,7 +58,7 @@ typedef void (^SPEventBlock)(id event);
  
 ------------------------------------------------------------------------------------------------- */
 
-@interface SPEventDispatcher : NSObject
+@interface SPEventDispatcher : NSObject <SPEventDispatcherExport>
 
 /// -------------
 /// @name Methods

@@ -1,64 +1,26 @@
 //
-//  SPTween.h
+//  SPTweenExport.h
 //  Sparrow
 //
-//  Created by Daniel Sperl on 09.05.09.
-//  Copyright 2011 Gamua. All rights reserved.
+//  Created by Shilo White on 5/5/14.
 //
-//  This program is free software; you can redistribute it and/or modify
-//  it under the terms of the Simplified BSD License.
 //
 
 #import <Foundation/Foundation.h>
-#import <Sparrow/SPAnimatable.h>
-#import <Sparrow/SPEventDispatcher.h>
-#import <Sparrow/SPTweenExport.h>
+#import <JavascriptCore/JavascriptCore.h>
+#import <Sparrow/SPEventDispatcherExport.h>
 
-/** ------------------------------------------------------------------------------------------------
- 
- An SPTween animates numeric properties of objects. It uses different transition functions to give
- the animations various styles.
- 
- The primary use of this class is to do standard animations like movement, fading, rotation, etc.
- But there are no limits on what to animate; as long as the property you want to animate is numeric
- (`int`, `uint`, `float`, `double`), the tween can handle it. For a list of available Transition 
- types, see `SPTransitions`. 
- 
- Here is an example of a tween that moves an object, rotates it, and fades it out:
- 
-	SPTween *tween = [SPTween tweenWithTarget:object time:2.0 transition:SP_TRANSITION_EASE_IN_OUT];
-	[tween moveToX:50.0f y:20.0f];
- 	[tween animateProperty:@"rotation" targetValue:object.rotation + SP_D2R(45)];
-  	[tween fadeTo:0.0f];
- 	[Sparrow.juggler addObject:tween];
- 
- Note that the object is added to a juggler at the end. A tween will only be executed if its
- `advanceTime:` method is executed regularly - the juggler will do that for us, and will release
- the tween when it is finished.
- 
- Tweens provide block-based callbacks that are executed in certain phases of their life time:
- 
- - `onStart`:    Invoked once when the tween starts.
- - `onUpdate`:   Invoked every time it is advanced.
- - `onComplete`: Invoked when it reaches its target value.
- - `onRepeat`:   Invoked each time the tween finishes one repetition.
- 
- Use the `repeatCount` property to repeat the tween several times. The `reverse` property defines
- the way in which the repetitions will be done (ping-pong 
- 
-------------------------------------------------------------------------------------------------- */
-
-@interface SPTween : SPEventDispatcher <SPAnimatable, SPTweenExport>
+@protocol SPTweenExport <SPEventDispatcherExport, JSExport>
 
 /// --------------------
 /// @name Initialization
 /// --------------------
 
-/// Initializes a tween with a target, duration (in seconds) and a transition function. 
+/// Initializes a tween with a target, duration (in seconds) and a transition function.
 /// _Designated Initializer_.
 - (instancetype)initWithTarget:(id)target time:(double)time transition:(NSString *)transition;
 
-/// Initializes a tween with a target, a time (in seconds) and a linear transition 
+/// Initializes a tween with a target, a time (in seconds) and a linear transition
 /// (`SPTransitionLinear`).
 - (instancetype)initWithTarget:(id)target time:(double)time;
 

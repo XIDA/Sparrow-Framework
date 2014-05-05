@@ -1,86 +1,30 @@
 //
-//  SPDisplayObject.h
+//  SPDisplayObjectExport.h
 //  Sparrow
 //
-//  Created by Daniel Sperl on 15.03.09.
-//  Copyright 2011 Gamua. All rights reserved.
+//  Created by Shilo White on 5/5/14.
 //
-//  This program is free software; you can redistribute it and/or modify
-//  it under the terms of the Simplified BSD License.
 //
 
 #import <Foundation/Foundation.h>
-#import <Sparrow/SPEventDispatcher.h>
-#import <Sparrow/SPDisplayObjectExport.h>
-
-@class SPDisplayObjectContainer;
-@class SPFragmentFilter;
-@class SPMatrix;
-@class SPPoint;
-@class SPRectangle;
+#import <JavascriptCore/JavascriptCore.h>
+#import <Sparrow/SPEventDispatcherExport.h>
 @class SPRenderSupport;
+@class SPDisplayObject;
+@class SPMatrix;
+@class SPRectangle;
+@class SPPoint;
+@class SPDisplayObjectContainer;
 @class SPStage;
+@class SPFragmentFilter;
 
-/** ------------------------------------------------------------------------------------------------
-
- The SPDisplayObject class is the base class for all objects that are rendered on the screen.
- 
- In Sparrow, all displayable objects are organized in a display tree. Only objects that are part of
- the display tree will be displayed (rendered). 
- 
- The display tree consists of leaf nodes (SPImage, SPQuad) that will be rendered directly to
- the screen, and of container nodes (subclasses of SPDisplayObjectContainer, like SPSprite).
- A container is simply a display object that has child nodes - which can, again, be either leaf
- nodes or other containers. 
- 
- A display object has properties that define its position in relation to its parent
- (`x`, `y`), as well as its rotation, skewing and scaling factors (`scaleX`, `scaleY`). Use the 
- `alpha` and `visible` properties to make an object translucent or invisible.
- 
- Every display object may be the target of touch events. If you don't want an object to be
- touchable, you can disable the `touchable` property. When it's disabled, neither the object
- nor its children will receive any more touch events.
- 
- **Points vs. Pixels**
- 
- All sizes and distances are measured in points. What this means in pixels depends on the 
- contentScaleFactor of the device. On a low resolution device (iPhone 3GS / iPad 1+2), one point
- corresponds to one pixel. On devices with a retina display, one point may be 2 pixels.
- 
- **Transforming coordinates**
- 
- Within the display tree, each object has its own local coordinate system. If you rotate a container,
- you rotate that coordinate system - and thus all the children of the container.
- 
- Sometimes you need to know where a certain point lies relative to another coordinate system. 
- That's the purpose of the method `transformationMatrixToSpace:`. It will create a matrix that
- represents the transformation of a point in one coordinate system to another. 
- 
- **Subclassing SPDisplayObject**
- 
- As SPDisplayObject is an abstract class, you can't instantiate it directly, but have to use one of 
- its subclasses instead. There are already a lot of them available, and most of the time they will
- suffice. 
- 
- However, you can create custom display objects as well. That's especially useful when you want to
- create an object with a custom render function.
- 
- You will need to implement the following methods when you subclass SPDisplayObject:
- 
-	- (void)render:(SPRenderSupport *)support;
-	- (SPRectangle *)boundsInSpace:(SPDisplayObject *)targetSpace;
- 
- Have a look at SPQuad for a sample implementation of those methods. 
- 
-------------------------------------------------------------------------------------------------- */
-
-@interface SPDisplayObject : SPEventDispatcher <SPDisplayObjectExport>
+@protocol SPDisplayObjectExport <SPEventDispatcherExport, JSExport>
 
 /// -------------
 /// @name Methods
 /// -------------
 
-/// Renders the display object with the help of a support object. 
+/// Renders the display object with the help of a support object.
 - (void)render:(SPRenderSupport *)support;
 
 /// Removes the object from its parent, if it has one.
