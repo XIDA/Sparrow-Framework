@@ -22,7 +22,7 @@
 
 /// Initializes a tween with a target, a time (in seconds) and a linear transition
 /// (`SPTransitionLinear`).
-- (instancetype)initWithTarget:(id)target time:(double)time;
+//- (instancetype)initWithTarget:(id)target time:(double)time;
 
 /// Factory method.
 + (instancetype)tweenWithTarget:(id)target time:(double)time transition:(NSString *)transition;

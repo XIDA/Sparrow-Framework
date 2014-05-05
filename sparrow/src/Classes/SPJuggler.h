@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 #import <Sparrow/SPAnimatable.h>
 #import <Sparrow/SPMacros.h>
+#import <Sparrow/SPJugglerExport.h>
 
 /** ------------------------------------------------------------------------------------------------
 
@@ -44,7 +45,7 @@
 
 ------------------------------------------------------------------------------------------------- */
 
-@interface SPJuggler : NSObject <SPAnimatable>
+@interface SPJuggler : NSObject <SPAnimatable, SPJugglerExport>
 {
   @protected
     NSMutableOrderedSet *_objects;

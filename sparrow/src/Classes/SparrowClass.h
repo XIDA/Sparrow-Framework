@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 #import <Sparrow/SPViewController.h>
 #import <Sparrow/SPJuggler.h>
+#import <Sparrow/SparrowClassExport.h>
 
 /** ------------------------------------------------------------------------------------------------
  
@@ -20,7 +21,7 @@
  
 ------------------------------------------------------------------------------------------------- */
 
-@interface Sparrow : NSObject
+@interface Sparrow : NSObject <SparrowClassExport>
 
 /// The currently active SPViewController.
 + (SPViewController *)currentController;
