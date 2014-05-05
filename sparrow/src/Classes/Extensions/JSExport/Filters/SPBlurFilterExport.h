@@ -17,7 +17,7 @@
 /// --------------------
 
 /// Initializes a blur filter with the specified blur and a resolution. _Designated Initializer_.
-- (instancetype)initWithBlur:(float)blur resolution:(float)resolution;
+//- (instancetype)initWithBlur:(float)blur resolution:(float)resolution;
 
 /// Initializes a blur filter with the specified blur and a resolution of 1.0f.
 //- (instancetype)initWithBlur:(float)blur;
