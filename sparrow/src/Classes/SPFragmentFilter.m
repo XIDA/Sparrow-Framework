@@ -138,6 +138,20 @@
     [self disposeCache];
 }
 
+- (void)setCached:(BOOL)cached
+{
+    BOOL isCached = self.cached;
+    if (cached && !isCached)
+        [self cache];
+    else if (!cached && isCached)
+        [self clearCache];
+}
+
+- (BOOL)cached
+{
+    return (_cacheRequested || _cache != nil);
+}
+
 - (void)renderObject:(SPDisplayObject *)object support:(SPRenderSupport *)support
 {
     // bottom layer
@@ -148,7 +162,8 @@
     if (_cacheRequested)
     {
         _cacheRequested = false;
-        _cache = [self renderPassesWithObject:object support:support intoCache:YES];
+        [_cache autorelease];
+        _cache = [[self renderPassesWithObject:object support:support intoCache:YES] retain];
         [self disposePassTextures];
     }
 
