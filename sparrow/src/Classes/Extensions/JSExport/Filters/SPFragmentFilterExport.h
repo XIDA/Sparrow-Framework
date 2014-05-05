@@ -28,7 +28,7 @@ typedef NS_ENUM(uint, SPFragmentFilterMode)
 /// Initializes a fragment filter with the specified number of passes and resolution.
 /// This initializer must only be called by the initializer of a subclass.
 /// _Designated Initializer_.
-- (instancetype)initWithNumPasses:(int)numPasses resolution:(float)resolution;
+//- (instancetype)initWithNumPasses:(int)numPasses resolution:(float)resolution;
 
 /// Initializes a fragment filter with the specified number of passes and a resolution of 1.0f.
 /// This initializer must only be called by the initializer of a subclass.
