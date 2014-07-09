@@ -18,14 +18,6 @@
 @class SPTexture;
 @class SPQuadBatch;
 
-// Filter Mode
-typedef NS_ENUM(uint, SPFragmentFilterMode)
-{
-    SPFragmentFilterModeBelow,
-    SPFragmentFilterModeReplace,
-    SPFragmentFilterModeAbove
-};
-
 /** ------------------------------------------------------------------------------------------------
 
  The SPFragmentFilter class is the base class for all filter effects in Sparrow.
