@@ -3,7 +3,7 @@
 //  Sparrow
 //
 //  Created by Robert Carone on 1/11/14.
-//  Copyright 2013 Gamua. All rights reserved.
+//  Copyright 2011-2014 Gamua. All rights reserved.
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the Simplified BSD License.
@@ -29,6 +29,7 @@ static NSMutableDictionary *framebufferCache = nil;
 {
     EAGLContext *_nativeContext;
     SPTexture *_renderTarget;
+    SGLStateCacheRef _glStateCache;
 }
 
 #pragma mark Initialization
@@ -37,8 +38,8 @@ static NSMutableDictionary *framebufferCache = nil;
 {
     if ((self = [super init]))
     {
-        _nativeContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2
-                                               sharegroup:sharegroup];
+        _nativeContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2 sharegroup:sharegroup];
+        _glStateCache = sglStateCacheCreate();
     }
     return self;
 }
@@ -50,6 +51,9 @@ static NSMutableDictionary *framebufferCache = nil;
 
 - (void)dealloc
 {
+    sglStateCacheRelease(_glStateCache);
+    _glStateCache = NULL;
+
     [_nativeContext release];
     [_renderTarget release];
 
@@ -76,14 +80,21 @@ static NSMutableDictionary *framebufferCache = nil;
     [_nativeContext presentRenderbuffer:GL_RENDERBUFFER];
 }
 
+- (BOOL)makeCurrentContext
+{
+    return [[self class] setCurrentContext:self];
+}
+
 + (BOOL)setCurrentContext:(SPContext *)context
 {
     if (context && [EAGLContext setCurrentContext:context->_nativeContext])
     {
         currentThreadDictionary[currentContextKey] = context;
+        sglStateCacheSetCurrent(context->_glStateCache);
         return YES;
     }
 
+    if (!context) sglStateCacheSetCurrent(NULL);
     return NO;
 }
 
@@ -133,7 +144,7 @@ static NSMutableDictionary *framebufferCache = nil;
     if (viewport)
         glViewport(viewport.x, viewport.y, viewport.width, viewport.height);
     else
-        glViewport(0, 0, Sparrow.currentController.drawableWidth, Sparrow.currentController.drawableHeight);
+        glViewport(0, 0, (int)Sparrow.currentController.view.drawableWidth, (int)Sparrow.currentController.view.drawableHeight);
 }
 
 - (SPRectangle *)scissorBox
@@ -173,9 +184,17 @@ static NSMutableDictionary *framebufferCache = nil;
     }
     else
     {
-        glBindFramebuffer(GL_FRAMEBUFFER, 1);
-        glViewport(0, 0, Sparrow.currentController.drawableWidth, Sparrow.currentController.drawableHeight);
+        // HACK: GLKView does not use the OpenGL state cache, so we have to 'reset' these values
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glViewport(0, 0, 0, 0);
+
+        [Sparrow.currentController.view bindDrawable];
     }
+
+  #if DEBUG
+    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+        NSLog(@"Currently bound framebuffer is invalid");
+  #endif
 
     SP_RELEASE_AND_RETAIN(_renderTarget, renderTarget);
 }

@@ -3,7 +3,7 @@
 //  Sparrow
 //
 //  Created by Daniel Sperl on 26.01.13.
-//  Copyright 2013 Gamua. All rights reserved.
+//  Copyright 2011-2014 Gamua. All rights reserved.
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the Simplified BSD License.
@@ -36,7 +36,6 @@
 - (void)readjustStageSize;
 
 @property (nonatomic, strong) SPContext *context;
-@property (nonatomic, readonly) GLKView *glkView;
 
 @end
 
@@ -60,6 +59,7 @@
     float _viewScaleFactor;
     BOOL _supportHighResolutions;
     BOOL _doubleOnPad;
+    BOOL _showStats;
 }
 
 #pragma mark Initialization
@@ -129,13 +129,16 @@
         globalContext = [[SPContext alloc] init];
     });
 
-    self.context = globalContext;
+    self.context = [[[SPContext alloc] initWithSharegroup:globalContext.sharegroup] autorelease];
     if (!_context || ![SPContext setCurrentContext:_context])
         NSLog(@"Could not create render context");
 
-    self.glkView.opaque = YES;
-    self.glkView.clearsContextBeforeDrawing = NO;
-    self.glkView.context = _context.nativeContext;
+    self.view.opaque = YES;
+    self.view.clearsContextBeforeDrawing = NO;
+    self.view.context = _context.nativeContext;
+
+    // the stats display could not be shown before now, since it requires a context.
+    self.showStats = _showStats;
 }
 
 - (void)viewDidLoad
@@ -199,7 +202,7 @@
     
     dispatch_async(_resourceQueue, ^
     {
-        [SPContext setCurrentContext:_resourceContext];
+        [_resourceContext makeCurrentContext];
         block();
     });
 }
@@ -210,32 +213,35 @@
 {
     @autoreleasepool
     {
-        if (!_root)
+        if ([_context makeCurrentContext])
         {
-            // ideally, we'd do this in 'viewDidLoad', but when iOS starts up in landscape mode,
-            // the view width and height are swapped. In this method, however, they are correct.
-            
-            [self readjustStageSize];
-            [self createRoot];
+            [Sparrow setCurrentController:self];
+
+            if (!_root)
+            {
+                // ideally, we'd do this in 'viewDidLoad', but when iOS starts up in landscape mode,
+                // the view width and height are swapped. In this method, however, they are correct.
+
+                [self readjustStageSize];
+                [self createRoot];
+            }
+
+            glDisable(GL_CULL_FACE);
+            glDisable(GL_DEPTH_TEST);
+            glEnable(GL_BLEND);
+
+            [_support nextFrame];
+            [_stage render:_support];
+            [_support finishQuadBatch];
+
+            if (_statsDisplay)
+                _statsDisplay.numDrawCalls = _support.numDrawCalls - 2; // stats display requires 2 itself
+
+          #if DEBUG
+            [SPRenderSupport checkForOpenGLError];
+          #endif
         }
-        
-        [Sparrow setCurrentController:self];
-        [SPContext setCurrentContext:_context];
-        
-        glDisable(GL_CULL_FACE);
-        glDisable(GL_DEPTH_TEST);
-        glEnable(GL_BLEND);
-        
-        [_support nextFrame];
-        [_stage render:_support];
-        [_support finishQuadBatch];
-        
-        if (_statsDisplay)
-            _statsDisplay.numDrawCalls = _support.numDrawCalls - 2; // stats display requires 2 itself
-        
-        #if DEBUG
-        [SPRenderSupport checkForOpenGLError];
-        #endif
+        else NSLog(@"WARNING: Sparrow was unable to set the current rendering context.");
     }
 }
 
@@ -312,6 +318,7 @@
                 touch.touchID = (size_t)uiTouch;
                 [touches addObject:touch];
             }
+
             [_touchProcessor processTouches:touches];
             _lastTouchTimestamp = event.timestamp;
         }
@@ -391,29 +398,15 @@
     return self.view.multipleTouchEnabled;
 }
 
-- (int)drawableWidth
-{
-    return (int)self.glkView.drawableWidth;
-}
-
-- (int)drawableHeight
-{
-    return (int)self.glkView.drawableHeight;
-}
-
-- (BOOL)showStats
-{
-    return _statsDisplay.visible;
-}
-
 - (void)setShowStats:(BOOL)showStats
 {
-    if (showStats && !_statsDisplay)
+    if (showStats && !_statsDisplay && _context)
     {
         _statsDisplay = [[SPStatsDisplay alloc] init];
         [_stage addChild:_statsDisplay];
     }
 
+    _showStats = showStats;
     _statsDisplay.visible = showStats;
 }
 
@@ -454,11 +447,6 @@
     CGSize viewSize = self.view.bounds.size;
     _stage.width  = viewSize.width  * _viewScaleFactor / _contentScaleFactor;
     _stage.height = viewSize.height * _viewScaleFactor / _contentScaleFactor;
-}
-
-- (GLKView *)glkView
-{
-    return (GLKView *)self.view;
 }
 
 @end

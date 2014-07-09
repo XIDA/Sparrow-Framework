@@ -1,6 +1,31 @@
 Sparrow: Changelog
 ==================
 
+Version 2.1 - 2014-07-04
+------------------------
+
+- added 'touchGroup' property to display object containers (similar to Flash's 'mouseChildren')
+- added 'perpendicular' and 'truncateLength:' methods to 'SPPoint', normalize is now safe
+- added 'randomFloat' method to SPUtils
+- added 'color' property to 'SPButton'
+- added uniform 'scale' property to display objects
+- added GLKView convenience property to 'SPViewController'
+- added Swift versions of Scaffold and Barebone projects (thanks to Dain Kaplan!)
+- enhanced quality of displacement map filter on iPad 1
+- deactivated OpenGL state cache for now, marked as 'experimental'
+- fixed Xcode warning about XCTest migration
+- fixed Xcode 6 beta incompatibilities / warnings
+- fixed some analyzer warnings
+- fixed some missing (auto)release calls
+- fixed that already ended touch events were canceled
+- fixed filter caching
+- fixed that stats display could only be enabled after context was created
+- fixed filter caching and implemented 'isCached' property
+- fixed performance problem by disabling vertex attrib arrays after filter rendering
+- fixed margin calculation in Blur Filter
+
+Again, a HUGE thanks to Robert Carone for his support!
+
 Version 2.1rc - 2014-04-04
 --------------------------
 
@@ -43,8 +68,8 @@ Version 2.1rc - 2014-04-04
 - fixed async texture scale in demo on iPad 3+
 - fixed crash of sound channel when it couldn't be created
 
-+ Thanks to Robert Carone for his MASSIVE help with this release! The majority
-  of these changes were done by him; most importantly the MRC change.
+Thanks to Robert Carone for his MASSIVE help with this release! The majority
+of these changes were done by him; most importantly the MRC change.
 
 version 2.0.1 - 2013-10-03
 --------------------------

@@ -3,7 +3,7 @@
 //  Sparrow
 //
 //  Created by Daniel Sperl on 13.07.09.
-//  Copyright 2011 Gamua. All rights reserved.
+//  Copyright 2011-2014 Gamua. All rights reserved.
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the Simplified BSD License.
@@ -91,5 +91,9 @@
 
 /// Indicates if the button is currently being pressed.
 @property (nonatomic, readonly) BOOL isDown;
+
+/// The color of the button's state image. Just like every image object, each pixel's
+/// color is multiplied with this value.
+@property (nonatomic, assign) uint color;
 
 @end

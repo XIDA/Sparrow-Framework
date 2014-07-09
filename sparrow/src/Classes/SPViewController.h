@@ -3,7 +3,7 @@
 //  Sparrow
 //
 //  Created by Daniel Sperl on 26.01.13.
-//  Copyright 2013 Gamua. All rights reserved.
+//  Copyright 2011-2014 Gamua. All rights reserved.
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the Simplified BSD License.
@@ -137,6 +137,9 @@ typedef void (^SPRootCreatedBlock)(id root);
 /// @name Properties
 /// ----------------
 
+/// The GLKView instance used as the root view for Sparrow.
+@property (nonatomic, strong) GLKView *view;
+
 /// The instance of the root class provided in `start:`method.
 @property (nonatomic, readonly) SPDisplayObject *root;
 
@@ -166,11 +169,5 @@ typedef void (^SPRootCreatedBlock)(id root);
 
 /// A callback block that will be executed when the root object has been created.
 @property (nonatomic, copy) SPRootCreatedBlock onRootCreated;
-
-/// The width, in pixels, of the underlying framebuffer object.
-@property (nonatomic, readonly) int drawableWidth;
-
-/// The height, in pixels, of the underlying framebuffer object.
-@property (nonatomic, readonly) int drawableHeight;
 
 @end

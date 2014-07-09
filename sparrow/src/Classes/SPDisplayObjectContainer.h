@@ -3,7 +3,7 @@
 //  Sparrow
 //
 //  Created by Daniel Sperl on 15.03.09.
-//  Copyright 2011 Gamua. All rights reserved.
+//  Copyright 2011-2014 Gamua. All rights reserved.
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the Simplified BSD License.
@@ -111,5 +111,9 @@
 /// The number of children of this container.
 @property (nonatomic, readonly) int numChildren;
 
+/// If a container is a 'touchGroup', it will act as a single touchable object.
+/// Touch events will have the container as target, not the touched child (similar to
+/// 'mouseChildren' in Flash, but with inverted logic). Default: `NO`
+@property (nonatomic, assign) BOOL touchGroup;
 
 @end

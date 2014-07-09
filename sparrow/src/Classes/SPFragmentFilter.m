@@ -3,7 +3,7 @@
 //  Sparrow
 //
 //  Created by Robert Carone on 9/16/13.
-//  Copyright 2013 Gamua. All rights reserved.
+//  Copyright 2011-2014 Gamua. All rights reserved.
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the Simplified BSD License.
@@ -162,7 +162,10 @@
     if (_cacheRequested)
     {
         _cacheRequested = false;
+<<<<<<< HEAD
         [_cache autorelease];
+=======
+>>>>>>> d02a92fce4c3384053011a36700b0db2e2bc3664
         _cache = [[self renderPassesWithObject:object support:support intoCache:YES] retain];
         [self disposePassTextures];
     }
@@ -397,6 +400,9 @@
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
         [self deactivateWithPass:i texture:passTexture];
     }
+
+    glDisableVertexAttribArray(_vertexPosID);
+    glDisableVertexAttribArray(_texCoordsID);
 
     [support popState];
     [support popClipRect];

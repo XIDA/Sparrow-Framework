@@ -3,7 +3,7 @@
 //  Sparrow
 //
 //  Created by Daniel Sperl on 25.03.09.
-//  Copyright 2011 Gamua. All rights reserved.
+//  Copyright 2011-2014 Gamua. All rights reserved.
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the Simplified BSD License.
@@ -112,7 +112,8 @@
     XCTAssertTrue(SP_IS_FLOAT_EQUAL(1.0f, result.length), @"wrong length");
     XCTAssertTrue(SP_IS_FLOAT_EQUAL(_p1.angle, result.angle), @"wrong angle");
     SPPoint *origin = [[SPPoint alloc] init];
-    XCTAssertThrows([origin normalize], @"origin cannot be normalized!");
+    result  = [origin normalize];
+    XCTAssertEqualWithAccuracy(result.length, 1.0f, E, @"wrong length");
 }
 
 - (void)testInvert

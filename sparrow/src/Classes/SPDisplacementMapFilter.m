@@ -3,7 +3,7 @@
 //  Sparrow
 //
 //  Created by Robert Carone on 10/10/13.
-//  Copyright 2013 Gamua. All rights reserved.
+//  Copyright 2011-2014 Gamua. All rights reserved.
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the Simplified BSD License.
@@ -206,13 +206,13 @@ static NSString *const SPDisplacementMapFilterProgram = @"SPDisplacementMapFilte
 
     // variables
     [source appendLine:@"attribute vec4 aPosition;"];
-    [source appendLine:@"attribute lowp vec4 aTexCoords;"];
-    [source appendLine:@"attribute lowp vec4 aMapTexCoords;"];
+    [source appendLine:@"attribute vec4 aTexCoords;"];
+    [source appendLine:@"attribute vec4 aMapTexCoords;"];
 
     [source appendLine:@"uniform mat4 uMvpMatrix;"];
 
-    [source appendLine:@"varying lowp vec4 vTexCoords;"];
-    [source appendLine:@"varying lowp vec4 vMapTexCoords;"];
+    [source appendLine:@"varying vec4 vTexCoords;"];
+    [source appendLine:@"varying vec4 vMapTexCoords;"];
 
     [source appendLine:@"void main() {"];
 
