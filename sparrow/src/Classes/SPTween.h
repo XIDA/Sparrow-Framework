@@ -49,6 +49,9 @@
 ------------------------------------------------------------------------------------------------- */
 
 @interface SPTween : SPEventDispatcher <SPAnimatable, SPTweenExport>
+{
+    double _currentTime;
+}
 
 /// --------------------
 /// @name Initialization

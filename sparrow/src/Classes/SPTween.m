@@ -25,7 +25,6 @@ typedef float (*FnPtrTransition) (id, SEL, float);
     NSMutableArray *_properties;
     
     double _totalTime;
-    double _currentTime;
     double _delay;
     
     int _repeatCount;
