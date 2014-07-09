@@ -162,10 +162,7 @@
     if (_cacheRequested)
     {
         _cacheRequested = false;
-<<<<<<< HEAD
         [_cache autorelease];
-=======
->>>>>>> d02a92fce4c3384053011a36700b0db2e2bc3664
         _cache = [[self renderPassesWithObject:object support:support intoCache:YES] retain];
         [self disposePassTextures];
     }
